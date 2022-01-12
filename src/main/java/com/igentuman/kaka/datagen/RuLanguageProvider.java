@@ -7,15 +7,15 @@ import net.minecraftforge.common.data.LanguageProvider;
 
 import static com.igentuman.kaka.setup.ModSetup.TAB_NAME;
 
-public class KakaLanguageProvider extends LanguageProvider {
+public class RuLanguageProvider extends LanguageProvider {
 
-    public KakaLanguageProvider(DataGenerator gen, String locale) {
+    public RuLanguageProvider(DataGenerator gen, String locale) {
         super(gen, Kaka.MODID, locale);
     }
 
     @Override
     protected void addTranslations() {
-        add("itemGroup." + TAB_NAME, "Kaka");
-        add(Registration.KAKA.get(), "Pile of Kaka");
+        add("itemGroup." + TAB_NAME, "Кака");
+        add(Registration.KAKA.get(), "Кучка Кака");
     }
 }
