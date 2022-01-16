@@ -1,5 +1,6 @@
 package com.igentuman.kaka.setup;
 
+import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,7 +23,7 @@ public class Registration {
         BLOCKS.register(bus);
         ITEMS.register(bus);
     }
-    public static final RegistryObject<Item> KAKA = ITEMS.register("kaka", () -> new Item(ITEM_PROPERTIES));
+    public static final RegistryObject<Item> KAKA = ITEMS.register("kaka", () -> new KakaItem(ITEM_PROPERTIES));
 
     public static RegistryObject<Item> registerItem(String name)
     {

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " m ",
+    "#x#"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:mushroom_stew"
+    },
+    "m": {
+      "item": "minecraft:bone_meal"
+    },
+    "#": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "kaka:kaka"
+  }
+}
