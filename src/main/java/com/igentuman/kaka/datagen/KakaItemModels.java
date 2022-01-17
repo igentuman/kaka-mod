@@ -13,8 +13,16 @@ public class KakaItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        singleTexture(Registration.KAKA.get().getRegistryName().getPath(),
+        singleTexture(Registration.COW_KAKA.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
-                "layer0", modLoc("item/kaka"));
+                "layer0", modLoc("item/cow_kaka"));
+
+        singleTexture(Registration.SHEEP_KAKA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/sheep_kaka"));
+
+        singleTexture(Registration.HORSE_KAKA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/horse_kaka"));
     }
 }

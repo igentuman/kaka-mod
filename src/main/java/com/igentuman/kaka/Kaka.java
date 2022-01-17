@@ -1,6 +1,6 @@
 package com.igentuman.kaka;
-
 import com.igentuman.kaka.setup.ClientSetup;
+import com.igentuman.kaka.setup.Events;
 import com.igentuman.kaka.setup.ModSetup;
 import com.igentuman.kaka.setup.Registration;
 import net.minecraftforge.api.distmarker.Dist;
@@ -23,5 +23,8 @@ public class Kaka
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(ModSetup::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT,() -> () -> modbus.addListener(ClientSetup::init));
+        modbus.register(new Events());
     }
+
+
 }

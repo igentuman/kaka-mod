@@ -16,6 +16,8 @@ public class EnLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup." + TAB_NAME, "Kaka");
-        add(Registration.KAKA.get(), "Pile of Kaka");
+        add(Registration.COW_KAKA.get(), "Pile of cow's Kaka");
+        add(Registration.SHEEP_KAKA.get(), "Pile of sheep's Kaka");
+        add(Registration.HORSE_KAKA.get(), "Pile of horse's Kaka");
     }
 }

@@ -1,4 +1,6 @@
 {
-  "item.kaka.kaka": "Кучка Кака",
+  "item.kaka.cow_kaka": "Коровье Кака",
+  "item.kaka.horse_kaka": "Лошадиное Кака",
+  "item.kaka.sheep_kaka": "Овечье Кака",
   "itemGroup.kaka": "Кака"
 }

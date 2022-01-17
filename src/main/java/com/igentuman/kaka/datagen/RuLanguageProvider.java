@@ -16,6 +16,8 @@ public class RuLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup." + TAB_NAME, "Кака");
-        add(Registration.KAKA.get(), "Кучка Кака");
+        add(Registration.COW_KAKA.get(), "Кучка Коровьего Кака");
+        add(Registration.SHEEP_KAKA.get(), "Кучка Овечьего Кака");
+        add(Registration.HORSE_KAKA.get(), "Кучка Лошадиного Кака");
     }
 }

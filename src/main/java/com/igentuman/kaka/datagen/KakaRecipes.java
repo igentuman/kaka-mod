@@ -17,8 +17,8 @@ public class KakaRecipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-
-        ShapedRecipeBuilder.shaped(Registration.KAKA.get())
+        return;
+        /*ShapedRecipeBuilder.shaped(Registration.COW_KAKA.get())
                 .pattern("   ")
                 .pattern(" m ")
                 .pattern("#x#")
@@ -26,7 +26,7 @@ public class KakaRecipes extends RecipeProvider {
                 .define('m', Items.BONE_MEAL)
                 .define('#', Blocks.DIRT)
                 .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Items.MUSHROOM_STEW))
-                .save(consumer);
+                .save(consumer);*/
 
     }
 }
