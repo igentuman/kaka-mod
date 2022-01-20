@@ -1,6 +1,13 @@
 {
+  "effect.kaka.kaka": "Kaka Effect",
   "item.kaka.cow_kaka": "Pile of cow's Kaka",
   "item.kaka.horse_kaka": "Pile of horse's Kaka",
+  "item.kaka.pig_kaka": "Pile of pigs's Kaka",
+  "item.kaka.player_kaka": "Pile of player's Kaka",
   "item.kaka.sheep_kaka": "Pile of sheep's Kaka",
+  "item.kaka.vilager_kaka": "Pile of vilager's Kaka",
+  "item.minecraft.lingering_potion.effect.kaka": "Splash Kaka Potion",
+  "item.minecraft.potion.effect.kaka": "Kaka Potion",
+  "item.minecraft.splash_potion.effect.kaka": "Splash Kaka Potion",
   "itemGroup.kaka": "Kaka"
 }

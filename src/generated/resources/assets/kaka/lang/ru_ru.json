@@ -1,6 +1,13 @@
 {
+  "effect.kaka.kaka": "Кака Эффект",
   "item.kaka.cow_kaka": "Коровье Кака",
   "item.kaka.horse_kaka": "Лошадиное Кака",
+  "item.kaka.pig_kaka": "Свинное Кака",
+  "item.kaka.player_kaka": "Кака игрока",
   "item.kaka.sheep_kaka": "Овечье Кака",
+  "item.kaka.vilager_kaka": "Кака жителя",
+  "item.minecraft.lingering_potion.effect.kaka": "Усиленное зелье Кака",
+  "item.minecraft.potion.effect.kaka": "Зелье Кака",
+  "item.minecraft.splash_potion.effect.kaka": "Взрывное зелье Кака",
   "itemGroup.kaka": "Кака"
 }

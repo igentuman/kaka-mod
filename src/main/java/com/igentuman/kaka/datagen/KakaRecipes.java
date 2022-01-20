@@ -4,8 +4,13 @@ import com.igentuman.kaka.setup.Registration;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 
 import java.util.function.Consumer;
 
@@ -17,16 +22,12 @@ public class KakaRecipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-        return;
-        /*ShapedRecipeBuilder.shaped(Registration.COW_KAKA.get())
-                .pattern("   ")
-                .pattern(" m ")
-                .pattern("#x#")
-                .define('x', Items.MUSHROOM_STEW)
-                .define('m', Items.BONE_MEAL)
-                .define('#', Blocks.DIRT)
-                .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Items.MUSHROOM_STEW))
-                .save(consumer);*/
-
+        ShapedRecipeBuilder.shaped(Registration.KAKA_BLOCK_ITEM.get())
+                .pattern("ccc")
+                .pattern("ccc")
+                .pattern("ccc")
+                .define('c', Registration.KAKA_ITEM)
+                .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.COW_KAKA.get()))
+                .save(consumer);
     }
 }

@@ -24,5 +24,19 @@ public class KakaItemModels extends ItemModelProvider {
         singleTexture(Registration.HORSE_KAKA.get().getRegistryName().getPath(),
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/horse_kaka"));
+
+        singleTexture(Registration.PIG_KAKA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/pig_kaka"));
+
+        singleTexture(Registration.VILAGER_KAKA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/vilager_kaka"));
+
+        singleTexture(Registration.PLAYER_KAKA.get().getRegistryName().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/player_kaka"));
+
+        withExistingParent(Registration.KAKA_BLOCK_ITEM.get().getRegistryName().getPath(), modLoc("block/kaka_block"));
     }
 }
