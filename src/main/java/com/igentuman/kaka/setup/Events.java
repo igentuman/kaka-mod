@@ -1,6 +1,7 @@
 package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
+import com.igentuman.kaka.config.CommonConfig;
 import com.igentuman.kaka.entity.goal.KakaGoal;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
@@ -21,20 +22,20 @@ public class Events {
     public static void onEntityJoinWorld(EntityJoinWorldEvent event)
     {
         Entity e = event.getEntity();
-        if (e instanceof Cow)
+        if (e instanceof Cow && CommonConfig.GENERAL.cow_kaka.get())
         {
             int goals = ((Cow) e).goalSelector.getAvailableGoals().toArray().length;
             ((Cow) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.COW_KAKA.get()));
-        } else if(e instanceof Sheep) {
+        } else if(e instanceof Sheep && CommonConfig.GENERAL.sheep_kaka.get()) {
             int goals = ((Sheep) e).goalSelector.getAvailableGoals().toArray().length;
             ((Sheep) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.SHEEP_KAKA.get()));
-        } else if(e instanceof Horse) {
+        } else if(e instanceof Horse && CommonConfig.GENERAL.horse_kaka.get()) {
             int goals = ((Horse) e).goalSelector.getAvailableGoals().toArray().length;
             ((Horse) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.HORSE_KAKA.get()));
-        } else if(e instanceof Pig) {
+        } else if(e instanceof Pig && CommonConfig.GENERAL.pig_kaka.get()) {
             int goals = ((Pig) e).goalSelector.getAvailableGoals().toArray().length;
             ((Pig) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.PIG_KAKA.get()));
-        } else if(e instanceof Villager) {
+        } else if(e instanceof Villager && CommonConfig.GENERAL.villager_kaka.get()) {
             int goals = ((Villager) e).goalSelector.getAvailableGoals().toArray().length;
             ((Villager) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.VILAGER_KAKA.get()));
         }

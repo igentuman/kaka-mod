@@ -3,6 +3,7 @@ package com.igentuman.kaka.entity.goal;
 import java.util.EnumSet;
 import java.util.Random;
 
+import com.igentuman.kaka.config.CommonConfig;
 import com.igentuman.kaka.setup.Registration;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -24,8 +25,8 @@ public class KakaGoal extends Goal {
         this.level = mob.level;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
         Random r = new Random();
-        int low = 1000;
-        int high = 2000;
+        int low = CommonConfig.GENERAL.minimal_timespan.get();
+        int high = low+1000;
         kakaDelay = r.nextInt(high-low) + low;
         kaka = kakaItem;
     }

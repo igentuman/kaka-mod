@@ -2,6 +2,7 @@ package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
 import com.igentuman.kaka.effect.KakaEffect;
+import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
@@ -59,16 +60,13 @@ public class Registration {
         ITEMS.register(bus);
         EFFECTS.register(bus);
         POTIONS.register(bus);
-
-        //BrewingRecipeRegistry.addRecipe(Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)), Ingredient.of(Registration.COW_KAKA.get()), PotionUtils.setPotion(new ItemStack(Items.POTION),  Registration.KAKA_POTION.get()));
-
     }
 
     public static final Tags.IOptionalNamedTag<Item> KAKA_ITEM = ItemTags.createOptional(new ResourceLocation(Kaka.MODID, "kaka_item"));
 
     public static RegistryObject<Item> registerItem(String name)
     {
-        return ITEMS.register(name, () -> new Item(ITEM_PROPERTIES));
+        return ITEMS.register(name, () -> new KakaItem(ITEM_PROPERTIES));
     }
 
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
