@@ -1,6 +1,7 @@
 package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
+import com.igentuman.kaka.block.KakaBlock;
 import com.igentuman.kaka.effect.KakaEffect;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
@@ -35,9 +37,9 @@ public class Registration {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
-    public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.DIRT).strength(2f);
+    public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.DIRT).strength(2f).sound(SoundType.HONEY_BLOCK).speedFactor(0.4f);
 
-    public static final RegistryObject<Block> KAKA_BLOCK = BLOCKS.register("kaka_block", () -> new Block(BLOCK_PROPERTIES));
+    public static final RegistryObject<Block> KAKA_BLOCK = BLOCKS.register("kaka_block", () -> new KakaBlock(BLOCK_PROPERTIES));
     public static final RegistryObject<Item> KAKA_BLOCK_ITEM = fromBlock(KAKA_BLOCK);
 
     public static final RegistryObject<Item> COW_KAKA       = registerItem("cow_kaka");

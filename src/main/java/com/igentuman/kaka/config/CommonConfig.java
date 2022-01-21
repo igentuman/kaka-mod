@@ -4,7 +4,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class CommonConfig {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
@@ -39,6 +38,9 @@ public class CommonConfig {
         public final ForgeConfigSpec.ConfigValue<Boolean> villager_kaka;
         public final ForgeConfigSpec.ConfigValue<Boolean> player_kaka;
         public final ForgeConfigSpec.ConfigValue<Integer> minimal_timespan;
+        public final ForgeConfigSpec.ConfigValue<Integer> player_kaka_hunger_loss;
+        public final ForgeConfigSpec.ConfigValue<Boolean> disable_bonemeal_fertilize;
+        public final ForgeConfigSpec.ConfigValue<Float> kaka_block_damage;
 
         public General(ForgeConfigSpec.Builder builder) {
             builder.push("General");
@@ -66,12 +68,22 @@ public class CommonConfig {
                     .comment("Allow player kaka")
                     .define("player_kaka", true);
 
+            player_kaka_hunger_loss = builder
+                    .comment("How much player need to lose hunger to Kaka")
+                    .define("player_kaka_hunger_loss", 3);
+
             minimal_timespan = builder
-                    .comment("Allow player kaka")
+                    .comment("Minimal timespan for pooping")
                     .define("minimal_timespan", 1000);
 
+            disable_bonemeal_fertilize = builder
+                    .comment("Disable usage of bone meal on crops")
+                    .define("disable_bonemeal_fertilize", true);
+
+            kaka_block_damage = builder
+                    .comment("Kaka Block damage when step on. (0 - disable damage)")
+                    .define("kaka_block_damage", 0.1F);
             builder.pop();
         }
-
     }
 }
