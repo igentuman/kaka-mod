@@ -29,5 +29,14 @@ public class KakaRecipes extends RecipeProvider {
                 .define('c', Registration.KAKA_ITEM)
                 .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.COW_KAKA.get()))
                 .save(consumer);
+
+        ShapedRecipeBuilder.shaped(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get())
+                .pattern("ccc")
+                .pattern("csc")
+                .pattern("ccc")
+                .define('c', Registration.KAKA_BLOCK_ITEM.get())
+                .define('s', Items.WITHER_SKELETON_SKULL)
+                .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.KAKA_BLOCK_ITEM.get()))
+                .save(consumer);
     }
 }

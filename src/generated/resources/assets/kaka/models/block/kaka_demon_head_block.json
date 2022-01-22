@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "kaka:block/kaka_demon_head_block"
+  }
+}

@@ -4,12 +4,9 @@ import java.util.EnumSet;
 import java.util.Random;
 
 import com.igentuman.kaka.config.CommonConfig;
-import com.igentuman.kaka.setup.Registration;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class KakaGoal extends Goal {

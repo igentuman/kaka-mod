@@ -2,6 +2,7 @@ package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
 import com.igentuman.kaka.config.CommonConfig;
+import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.entity.goal.KakaGoal;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -85,5 +87,10 @@ public class Events {
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
+        event.put(Registration.KAKA_DEMON.get(), KakaDemon.prepareAttributes().build());
     }
 }

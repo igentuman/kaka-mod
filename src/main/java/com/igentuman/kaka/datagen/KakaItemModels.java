@@ -37,6 +37,11 @@ public class KakaItemModels extends ItemModelProvider {
                 mcLoc("item/generated"),
                 "layer0", modLoc("item/player_kaka"));
 
+        withExistingParent(Registration.KAKA_DEMON_EGG.get().getRegistryName().getPath(), mcLoc("item/template_spawn_egg"));
+
         withExistingParent(Registration.KAKA_BLOCK_ITEM.get().getRegistryName().getPath(), modLoc("block/kaka_block"));
+
+        withExistingParent(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get().getRegistryName().getPath(), modLoc("block/kaka_demon_head_block"));
+
     }
 }

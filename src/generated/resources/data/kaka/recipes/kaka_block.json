@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "ccc",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "tag": "kaka:kaka_item"
+    }
+  },
+  "result": {
+    "item": "kaka:kaka_block"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "csc",
+    "ccc"
+  ],
+  "key": {
+    "c": {
+      "item": "kaka:kaka_block"
+    },
+    "s": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "result": {
+    "item": "kaka:kaka_demon_head_block"
+  }
+}

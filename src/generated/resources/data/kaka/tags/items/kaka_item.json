@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "kaka:cow_kaka",
+    "kaka:sheep_kaka",
+    "kaka:horse_kaka",
+    "kaka:vilager_kaka",
+    "kaka:player_kaka",
+    "kaka:pig_kaka"
+  ]
+}

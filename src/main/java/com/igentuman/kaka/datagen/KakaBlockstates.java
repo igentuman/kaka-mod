@@ -15,5 +15,6 @@ public class KakaBlockstates extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(Registration.KAKA_BLOCK.get());
+        simpleBlock(Registration.KAKA_DEMON_HEAD_BLOCK.get());
     }
 }

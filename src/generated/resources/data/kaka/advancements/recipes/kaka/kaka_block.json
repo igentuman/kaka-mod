@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "kaka:kaka_block"
+    ]
+  },
+  "criteria": {
+    "dirt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kaka:cow_kaka"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "kaka:kaka_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dirt",
+      "has_the_recipe"
+    ]
+  ]
+}
