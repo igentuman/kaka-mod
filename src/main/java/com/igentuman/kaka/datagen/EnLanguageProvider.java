@@ -23,6 +23,7 @@ public class EnLanguageProvider extends LanguageProvider {
         add(Registration.VILAGER_KAKA.get(), "Pile of vilager's Kaka");
         add(Registration.PLAYER_KAKA.get(), "Pile of player's Kaka");
         add(Registration.KAKA_BLOCK_ITEM.get(), "Kaka Block");
+        add(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get(), "Kaka Demon Head Block (WIP)");
         add(Registration.KAKA_EFFECT.get(), "Kaka Effect");
         add("item.minecraft.potion.effect.kaka", "Kaka Potion");
         add("item.minecraft.splash_potion.effect.kaka", "Splash Kaka Potion");

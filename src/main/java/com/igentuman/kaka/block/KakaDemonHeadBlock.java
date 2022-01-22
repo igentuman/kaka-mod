@@ -6,7 +6,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
@@ -28,8 +26,7 @@ import javax.annotation.Nullable;
 public class KakaDemonHeadBlock extends HorizontalDirectionalBlock {
     
     private static BlockPattern kakaDemonPatternFull;
-    @Nullable
-    private static BlockPattern kakaDemonPatternBase;
+
     public KakaDemonHeadBlock(Properties props) {
         super(props);
     }
@@ -76,14 +73,6 @@ public class KakaDemonHeadBlock extends HorizontalDirectionalBlock {
         }
     }
 
-    public static boolean canSpawnMob(Level p_58268_, BlockPos p_58269_, ItemStack p_58270_) {
-        if (p_58270_.is(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get()) && p_58269_.getY() >= p_58268_.getMinBuildHeight() + 2 && p_58268_.getDifficulty() != Difficulty.PEACEFUL && !p_58268_.isClientSide) {
-            return getOrCreateKakaDemonBase().find(p_58268_, p_58269_) != null;
-        } else {
-            return false;
-        }
-    }
-
     private static BlockPattern getOrCreateKakaDemonFull() {
         if (kakaDemonPatternFull == null) {
             kakaDemonPatternFull = BlockPatternBuilder.start().aisle("~~^~~", "#####", "#~#~#","~~#~~").where('#', (p_58272_) -> {
@@ -92,15 +81,5 @@ public class KakaDemonHeadBlock extends HorizontalDirectionalBlock {
         }
 
         return kakaDemonPatternFull;
-    }
-
-    private static BlockPattern getOrCreateKakaDemonBase() {
-        if (kakaDemonPatternBase == null) {
-            kakaDemonPatternBase = BlockPatternBuilder.start().aisle("     ", "#####", "#~#~#","~~#~~").where('#', (p_58266_) -> {
-                return p_58266_.getState().is(Registration.KAKA_DEMON_HEAD_BLOCK.get());
-            }).where('~', BlockInWorld.hasState(BlockMaterialPredicate.forMaterial(Material.AIR))).build();
-        }
-
-        return kakaDemonPatternBase;
     }
 }

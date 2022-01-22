@@ -1,6 +1,11 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "kaka:block/kaka_demon_head_block"
+    "down": "kaka:block/kaka_demon_bottom",
+    "up": "kaka:block/kaka_demon_top",
+    "north": "kaka:block/kaka_demon_face",
+    "south": "kaka:block/kaka_demon_side",
+    "east": "kaka:block/kaka_demon_side",
+    "west": "kaka:block/kaka_demon_side"
   }
 }

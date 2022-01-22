@@ -74,7 +74,7 @@ public class CommonConfig {
 
             minimal_timespan = builder
                     .comment("Minimal timespan for pooping")
-                    .define("minimal_timespan", 1000);
+                    .define("minimal_timespan", 2000);
 
             disable_bonemeal_fertilize = builder
                     .comment("Disable usage of bone meal on crops")
