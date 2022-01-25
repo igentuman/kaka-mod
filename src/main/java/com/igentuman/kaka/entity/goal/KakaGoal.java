@@ -50,7 +50,7 @@ public class KakaGoal extends Goal {
         if (this.counter > this.kakaDelay) {
             mob.spawnAtLocation(kaka);
             if(ClientConfig.GENERAL.mobs_fart_volume.get() > 0) {
-                mob.playSound(Registration.FART1.get(),1.0F, ClientConfig.GENERAL.mobs_fart_volume.get());
+                mob.playSound(Registration.FART.get(),1.0F, ClientConfig.GENERAL.mobs_fart_volume.get());
             }
 
             counter=0;

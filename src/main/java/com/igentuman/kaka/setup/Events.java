@@ -85,7 +85,7 @@ public class Events {
             if(diff > 0 && diff >= CommonConfig.GENERAL.player_kaka_hunger_loss.get()*2) {
                 player.spawnAtLocation(Registration.PLAYER_KAKA.get());
                 if(ClientConfig.GENERAL.player_fart_volume.get() > 0) {
-                    player.playSound(Registration.FART1.get(),1.0F, ClientConfig.GENERAL.player_fart_volume.get());
+                    player.playSound(Registration.FART.get(),1.0F, ClientConfig.GENERAL.player_fart_volume.get());
                 }
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());
             } else if(diff < 0) {

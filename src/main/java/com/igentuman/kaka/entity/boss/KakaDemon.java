@@ -1,7 +1,6 @@
 package com.igentuman.kaka.entity.boss;
 
 import com.google.common.collect.ImmutableList;
-import com.igentuman.kaka.config.CommonConfig;
 import com.igentuman.kaka.entity.boss.attack.KakaThrow;
 import com.igentuman.kaka.setup.Registration;
 import net.minecraft.core.particles.ParticleTypes;
@@ -12,7 +11,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
@@ -58,8 +56,8 @@ public class KakaDemon extends Monster implements PowerableMob, RangedAttackMob 
     private int attackAnimationTick;
 
     private final ServerBossEvent bossEvent = (ServerBossEvent)(new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
-    private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (p_31504_) -> {
-        return p_31504_.getMobType() != MobType.UNDEAD && p_31504_.attackable();
+    private static final Predicate<LivingEntity> LIVING_ENTITY_SELECTOR = (entity) -> {
+        return !(entity instanceof KakaDemon) && entity.attackable();
     };
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(20.0D).selector(LIVING_ENTITY_SELECTOR);
     private int nextAttackUpdate = 0;
@@ -246,10 +244,9 @@ public class KakaDemon extends Monster implements PowerableMob, RangedAttackMob 
 
             KakaThrow kakaThrow = new KakaThrow(this.level, this);
             kakaThrow.setOwner(this);
-            kakaThrow.setItem(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), Registration.KAKA_POTION.get()));
+            kakaThrow.setItem(new ItemStack(Registration.KAKA_BLOCK_ITEM.get()));
             kakaThrow.setXRot(kakaThrow.getXRot() - -20.0F);
             kakaThrow.shoot(d0, d1 + d3 * 0.2D, d2, 0.85F, 16.0F);
-            this.swing(InteractionHand.MAIN_HAND);
             this.level.addFreshEntity(kakaThrow);
         }
     }
@@ -319,15 +316,15 @@ public class KakaDemon extends Monster implements PowerableMob, RangedAttackMob 
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.WITHER_AMBIENT;
+        return Registration.KAKADEMON_ATTACK.get();
     }
 
     protected SoundEvent getHurtSound(DamageSource p_31500_) {
-        return SoundEvents.WITHER_HURT;
+        return Registration.KAKADEMON_HIT.get();
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.WITHER_DEATH;
+        return Registration.KAKADEMON_DIE.get();
     }
 
     class DoNothingGoal extends Goal {

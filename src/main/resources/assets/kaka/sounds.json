@@ -18,5 +18,37 @@
         "stream": true
       }
     ]
+  },
+  "kakademon_attack": {
+    "sounds": [
+      {
+        "name": "kaka:kakademon/attack",
+        "stream": true
+      }
+    ]
+  },
+  "kakademon_spawn": {
+    "sounds": [
+      {
+        "name": "kaka:kakademon/spawn",
+        "stream": true
+      }
+    ]
+  },
+  "kakademon_hit": {
+    "sounds": [
+      {
+        "name": "kaka:kakademon/hit",
+        "stream": true
+      }
+    ]
+  },
+  "kakademon_die": {
+    "sounds": [
+      {
+        "name": "kaka:kakademon/die",
+        "stream": true
+      }
+    ]
   }
 }

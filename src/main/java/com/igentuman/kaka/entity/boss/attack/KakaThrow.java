@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
+import com.igentuman.kaka.entity.ThrowKakaBlock;
 import com.igentuman.kaka.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -46,12 +48,12 @@ public class KakaThrow extends ThrowableItemProjectile implements ItemSupplier {
         super(EntityType.POTION, p_37531_, p_37532_, p_37533_, level);
         owner = ent;
     }
-    public KakaThrow(EntityType<? extends net.minecraft.world.entity.projectile.ThrownPotion> p_37527_, Level p_37528_) {
+    public KakaThrow(EntityType<? extends ThrowableItemProjectile> p_37527_, Level p_37528_) {
         super(p_37527_, p_37528_);
     }
 
     public KakaThrow(Level level, LivingEntity p_37536_) {
-        super(EntityType.POTION, p_37536_, level);
+        super(Registration.THROW_KAKA_BLOCK.get(), p_37536_, level);
     }
 
     public KakaThrow(Level level, double p_37531_, double p_37532_, double p_37533_) {
@@ -92,21 +94,9 @@ public class KakaThrow extends ThrowableItemProjectile implements ItemSupplier {
         super.onHit(result);
         if (!this.level.isClientSide) {
             ItemStack itemstack = this.getItem();
-            Potion potion = PotionUtils.getPotion(itemstack);
             List<MobEffectInstance> list = PotionUtils.getMobEffects(itemstack);
-            boolean flag = potion == Potions.WATER && list.isEmpty();
-            if (flag) {
-                this.applyWater();
-            } else if (!list.isEmpty()) {
-                if (this.isLingering()) {
-                    this.makeAreaOfEffectCloud(itemstack, potion);
-                } else {
-                    this.applySplash(list, result.getType() == HitResult.Type.ENTITY ? ((EntityHitResult)result).getEntity() : null);
-                }
-            }
-
-            int i = potion.hasInstantEffects() ? 2007 : 2002;
-            this.level.levelEvent(i, this.blockPosition(), PotionUtils.getColor(itemstack));
+            this.applySplash(list, result.getType() == HitResult.Type.ENTITY ? ((EntityHitResult)result).getEntity() : null);
+            this.level.levelEvent(2002, this.blockPosition(), PotionUtils.getColor(itemstack));
             this.discard();
         }
     }

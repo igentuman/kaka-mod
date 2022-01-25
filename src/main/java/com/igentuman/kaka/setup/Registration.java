@@ -4,6 +4,7 @@ import com.igentuman.kaka.Kaka;
 import com.igentuman.kaka.block.KakaBlock;
 import com.igentuman.kaka.block.KakaDemonHeadBlock;
 import com.igentuman.kaka.effect.KakaEffect;
+import com.igentuman.kaka.entity.ThrowKakaBlock;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.resources.ResourceLocation;
@@ -39,7 +40,11 @@ public class Registration {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
 
-    public static final RegistryObject<SoundEvent> FART1 = SOUND_EVENTS.register("fart", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"fart")));
+    public static final RegistryObject<SoundEvent> FART = SOUND_EVENTS.register("fart", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"fart")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_HIT = SOUND_EVENTS.register("kakademon_hit", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_hit")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_SPAWN = SOUND_EVENTS.register("kakademon_spawn", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_spawn")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_DIE = SOUND_EVENTS.register("kakademon_die", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_die")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_ATTACK = SOUND_EVENTS.register("kakademon_attack", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_attack")));
 
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
     public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.DIRT).strength(2f).sound(SoundType.HONEY_BLOCK).speedFactor(0.4f);
@@ -70,6 +75,9 @@ public class Registration {
             .setShouldReceiveVelocityUpdates(false)
             .sized(1.4F, 2.7F)
             .build("kaka_demon"));
+
+    public static final RegistryObject<EntityType<ThrowKakaBlock>> THROW_KAKA_BLOCK = ENTITIES.register("kaka_block", () -> EntityType.Builder.of(ThrowKakaBlock::new, MobCategory.MISC)
+            .build("kaka_block"));
 
     public static final RegistryObject<Item> KAKA_DEMON_EGG = ITEMS.register("kaka_demon", () -> new ForgeSpawnEggItem(KAKA_DEMON, 0x420000, 0x783F04, ITEM_PROPERTIES));
 
