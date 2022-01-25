@@ -1,6 +1,7 @@
 package com.igentuman.kaka.entity.goal;
 
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -22,16 +23,16 @@ public class RangedAttackGoal extends Goal {
    private final float attackRadius;
    private final float attackRadiusSqr;
 
-   public RangedAttackGoal(RangedAttackMob p_25768_, double p_25769_, int p_25770_, float p_25771_) {
-      this(p_25768_, p_25769_, p_25770_, p_25770_, p_25771_);
+   public RangedAttackGoal(RangedAttackMob mob, double p_25769_, int p_25770_, float p_25771_) {
+      this(mob, p_25769_, p_25770_, p_25770_, p_25771_);
    }
 
-   public RangedAttackGoal(RangedAttackMob p_25773_, double p_25774_, int p_25775_, int p_25776_, float p_25777_) {
-      if (!(p_25773_ instanceof LivingEntity)) {
+   public RangedAttackGoal(RangedAttackMob mob, double p_25774_, int p_25775_, int p_25776_, float p_25777_) {
+      if (!(mob instanceof LivingEntity)) {
          throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
       } else {
-         this.rangedAttackMob = p_25773_;
-         this.mob = (Mob)p_25773_;
+         this.rangedAttackMob = mob;
+         this.mob = (Mob)mob;
          this.speedModifier = p_25774_;
          this.attackIntervalMin = p_25775_;
          this.attackIntervalMax = p_25776_;
@@ -90,6 +91,7 @@ public class RangedAttackGoal extends Goal {
          float f1 = Mth.clamp(f, 0.1F, 1.0F);
          this.rangedAttackMob.performRangedAttack(this.target, f1);
          this.attackTime = Mth.floor(f * (float)(this.attackIntervalMax - this.attackIntervalMin) + (float)this.attackIntervalMin);
+         this.mob.swing(InteractionHand.MAIN_HAND);
       } else if (this.attackTime < 0) {
          this.attackTime = Mth.floor(Mth.lerp(Math.sqrt(d0) / (double)this.attackRadius, (double)this.attackIntervalMin, (double)this.attackIntervalMax));
       }

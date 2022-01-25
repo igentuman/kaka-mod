@@ -1,5 +1,6 @@
 package com.igentuman.kaka;
 
+import com.igentuman.kaka.config.ClientConfig;
 import com.igentuman.kaka.config.CommonConfig;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.setup.ClientSetup;
@@ -28,6 +29,7 @@ public class Kaka
 
     public Kaka() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.spec);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.spec);
         Registration.init();
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(ModSetup::init);
@@ -39,6 +41,8 @@ public class Kaka
     public static void onModConfigEvent(final ModConfigEvent event) {
         if (event.getConfig().getType() == ModConfig.Type.COMMON)
             CommonConfig.setLoaded();
+        if (event.getConfig().getType() == ModConfig.Type.CLIENT)
+            ClientConfig.setLoaded();
     }
 
     @SubscribeEvent

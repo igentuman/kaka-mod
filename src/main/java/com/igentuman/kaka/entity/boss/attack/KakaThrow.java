@@ -42,24 +42,24 @@ public class KakaThrow extends ThrowableItemProjectile implements ItemSupplier {
     public static final Predicate<LivingEntity> WATER_SENSITIVE = LivingEntity::isSensitiveToWater;
     public LivingEntity owner;
 
-    public KakaThrow(Level p_37530_, LivingEntity ent, double p_37531_, double p_37532_, double p_37533_) {
-        super(EntityType.POTION, p_37531_, p_37532_, p_37533_, p_37530_);
+    public KakaThrow(Level level, LivingEntity ent, double p_37531_, double p_37532_, double p_37533_) {
+        super(EntityType.POTION, p_37531_, p_37532_, p_37533_, level);
         owner = ent;
     }
     public KakaThrow(EntityType<? extends net.minecraft.world.entity.projectile.ThrownPotion> p_37527_, Level p_37528_) {
         super(p_37527_, p_37528_);
     }
 
-    public KakaThrow(Level p_37535_, LivingEntity p_37536_) {
-        super(EntityType.POTION, p_37536_, p_37535_);
+    public KakaThrow(Level level, LivingEntity p_37536_) {
+        super(EntityType.POTION, p_37536_, level);
     }
 
-    public KakaThrow(Level p_37530_, double p_37531_, double p_37532_, double p_37533_) {
-        super(EntityType.POTION, p_37531_, p_37532_, p_37533_, p_37530_);
+    public KakaThrow(Level level, double p_37531_, double p_37532_, double p_37533_) {
+        super(EntityType.POTION, p_37531_, p_37532_, p_37533_, level);
     }
 
     protected Item getDefaultItem() {
-        return Items.SPLASH_POTION;
+        return Registration.KAKA_BLOCK_ITEM.get();
     }
 
     protected float getGravity() {

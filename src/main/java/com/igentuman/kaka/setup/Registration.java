@@ -7,6 +7,7 @@ import com.igentuman.kaka.effect.KakaEffect;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -35,6 +36,10 @@ public class Registration {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+
+    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
+
+    public static final RegistryObject<SoundEvent> FART1 = SOUND_EVENTS.register("fart", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"fart")));
 
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
     public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.DIRT).strength(2f).sound(SoundType.HONEY_BLOCK).speedFactor(0.4f);
@@ -75,6 +80,7 @@ public class Registration {
         EFFECTS.register(bus);
         POTIONS.register(bus);
         ENTITIES.register(bus);
+        SOUND_EVENTS.register(bus);
     }
 
     public static final Tags.IOptionalNamedTag<Item> KAKA_ITEM = ItemTags.createOptional(new ResourceLocation(Kaka.MODID, "kaka_item"));

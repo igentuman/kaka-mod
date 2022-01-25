@@ -3,7 +3,12 @@ package com.igentuman.kaka.entity.goal;
 import java.util.EnumSet;
 import java.util.Random;
 
+import com.igentuman.kaka.config.ClientConfig;
 import com.igentuman.kaka.config.CommonConfig;
+import com.igentuman.kaka.entity.sound.Sound;
+import com.igentuman.kaka.setup.Registration;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.item.Item;
@@ -44,6 +49,10 @@ public class KakaGoal extends Goal {
         this.counter++;
         if (this.counter > this.kakaDelay) {
             mob.spawnAtLocation(kaka);
+            if(ClientConfig.GENERAL.mobs_fart_volume.get() > 0) {
+                mob.playSound(Registration.FART1.get(),1.0F, ClientConfig.GENERAL.mobs_fart_volume.get());
+            }
+
             counter=0;
         }
     }

@@ -1,9 +1,11 @@
 package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
+import com.igentuman.kaka.config.ClientConfig;
 import com.igentuman.kaka.config.CommonConfig;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.entity.goal.KakaGoal;
+import com.igentuman.kaka.entity.sound.Sound;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
@@ -82,6 +84,9 @@ public class Events {
             float diff = lastHungerLevels.get(player.getUUID()) - player.getFoodData().getFoodLevel();
             if(diff > 0 && diff >= CommonConfig.GENERAL.player_kaka_hunger_loss.get()*2) {
                 player.spawnAtLocation(Registration.PLAYER_KAKA.get());
+                if(ClientConfig.GENERAL.player_fart_volume.get() > 0) {
+                    player.playSound(Registration.FART1.get(),1.0F, ClientConfig.GENERAL.player_fart_volume.get());
+                }
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());
             } else if(diff < 0) {
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());

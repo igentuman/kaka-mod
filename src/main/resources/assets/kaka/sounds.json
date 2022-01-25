@@ -1,0 +1,22 @@
+{
+  "fart": {
+    "sounds": [
+      {
+        "name": "kaka:fart/fart_01",
+        "stream": true
+      },
+      {
+        "name": "kaka:fart/fart_02",
+        "stream": true
+      },
+      {
+        "name": "kaka:fart/fart_03",
+        "stream": true
+      },
+      {
+        "name": "kaka:fart/fart_04",
+        "stream": true
+      }
+    ]
+  }
+}
