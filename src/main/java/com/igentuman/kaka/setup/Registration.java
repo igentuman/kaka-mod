@@ -7,9 +7,11 @@ import com.igentuman.kaka.effect.KakaEffect;
 import com.igentuman.kaka.entity.ThrowKakaBlock;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.item.KakaItem;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,7 +25,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -91,7 +92,7 @@ public class Registration {
         SOUND_EVENTS.register(bus);
     }
 
-    public static final Tags.IOptionalNamedTag<Item> KAKA_ITEM = ItemTags.createOptional(new ResourceLocation(Kaka.MODID, "kaka_item"));
+    public static final TagKey<Item> KAKA_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Kaka.MODID, "kaka_item"));
 
     public static RegistryObject<Item> registerItem(String name) {
         return ITEMS.register(name, () -> new KakaItem(ITEM_PROPERTIES));
