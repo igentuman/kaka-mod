@@ -18,7 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,7 +33,7 @@ public class Events {
     private static final Map<UUID, Integer> lastHungerLevels = new HashMap<UUID, Integer>();
 
     @SubscribeEvent
-    public static void onEntityJoinWorld(EntityJoinWorldEvent event)
+    public static void EntityJoinLevelEvent(EntityJoinLevelEvent event)
     {
         Entity e = event.getEntity();
         if (e instanceof Cow && CommonConfig.GENERAL.cow_kaka.get())

@@ -3,7 +3,7 @@ package com.igentuman.kaka.entity.render;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.entity.model.KakaDemonModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -32,7 +32,7 @@ public class KakaDemonRender extends MobRenderer<KakaDemon, KakaDemonModel<KakaD
             float f = 13.0F;
             float f1 = p_115014_.animationPosition - p_115014_.animationSpeed * (1.0F - p_115018_) + 6.0F;
             float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-            p_115015_.mulPose(Vector3f.ZP.rotationDegrees(6.5F * f2));
+            p_115015_.mulPose(Axis.ZP.rotationDegrees(6.5F * f2));
         }
     }
 }

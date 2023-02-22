@@ -3,6 +3,7 @@ package com.igentuman.kaka.datagen;
 import com.igentuman.kaka.setup.Registration;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -16,13 +17,13 @@ import java.util.function.Consumer;
 
 public class KakaRecipes extends RecipeProvider {
 
-    public KakaRecipes(DataGenerator generatorIn) {
+    public KakaRecipes(PackOutput generatorIn) {
         super(generatorIn);
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(Registration.KAKA_BLOCK_ITEM.get())
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Registration.KAKA_BLOCK_ITEM.get())
                 .pattern("ccc")
                 .pattern("ccc")
                 .pattern("ccc")
@@ -30,7 +31,7 @@ public class KakaRecipes extends RecipeProvider {
                 .unlockedBy("dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Registration.COW_KAKA.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get())
                 .pattern("ccc")
                 .pattern("csc")
                 .pattern("ccc")

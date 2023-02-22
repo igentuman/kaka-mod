@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "kaka:kaka_demon_head_block"
+        }
+      ],
+      "name": "kaka_head",
+      "rolls": 1.0
+    }
+  ]
+}

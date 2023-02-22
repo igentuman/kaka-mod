@@ -8,6 +8,8 @@ import com.igentuman.kaka.entity.ThrowKakaBlock;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import com.igentuman.kaka.item.KakaItem;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
@@ -41,13 +43,13 @@ public class Registration {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MODID);
 
-    public static final RegistryObject<SoundEvent> FART = SOUND_EVENTS.register("fart", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"fart")));
-    public static final RegistryObject<SoundEvent> KAKADEMON_HIT = SOUND_EVENTS.register("kakademon_hit", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_hit")));
-    public static final RegistryObject<SoundEvent> KAKADEMON_SPAWN = SOUND_EVENTS.register("kakademon_spawn", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_spawn")));
-    public static final RegistryObject<SoundEvent> KAKADEMON_DIE = SOUND_EVENTS.register("kakademon_die", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_die")));
-    public static final RegistryObject<SoundEvent> KAKADEMON_ATTACK = SOUND_EVENTS.register("kakademon_attack", () -> new SoundEvent(new ResourceLocation(Kaka.MODID,"kakademon_attack")));
+    public static final RegistryObject<SoundEvent> FART = SOUND_EVENTS.register("fart", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,"fart")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_HIT = SOUND_EVENTS.register("kakademon_hit", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,"kakademon_hit")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_SPAWN = SOUND_EVENTS.register("kakademon_spawn", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,"kakademon_spawn")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_DIE = SOUND_EVENTS.register("kakademon_die", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,"kakademon_die")));
+    public static final RegistryObject<SoundEvent> KAKADEMON_ATTACK = SOUND_EVENTS.register("kakademon_attack", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,"kakademon_attack")));
 
-    public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ModSetup.ITEM_GROUP);
+    public static final Item.Properties ITEM_PROPERTIES = new Item.Properties();
     public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.DIRT).strength(2f).sound(SoundType.HONEY_BLOCK).speedFactor(0.4f);
 
     public static final RegistryObject<Block> KAKA_DEMON_HEAD_BLOCK = BLOCKS.register("kaka_demon_head_block", () -> new KakaDemonHeadBlock(BLOCK_PROPERTIES));
@@ -56,7 +58,7 @@ public class Registration {
     public static final RegistryObject<Block> KAKA_BLOCK = BLOCKS.register("kaka_block", () -> new KakaBlock(BLOCK_PROPERTIES));
     public static final RegistryObject<Item> KAKA_BLOCK_ITEM = fromBlock(KAKA_BLOCK);
 
-    private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
+    private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MODID);
 
     public static final RegistryObject<Item> COW_KAKA = registerItem("cow_kaka");
     public static final RegistryObject<Item> SHEEP_KAKA = registerItem("sheep_kaka");
@@ -92,7 +94,12 @@ public class Registration {
         SOUND_EVENTS.register(bus);
     }
 
-    public static final TagKey<Item> KAKA_ITEM = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(Kaka.MODID, "kaka_item"));
+    public static SoundEvent registerSound(String name)
+    {
+        return Registry.register(BuiltInRegistries.SOUND_EVENT, new ResourceLocation(Kaka.MODID,name), SoundEvent.createVariableRangeEvent(new ResourceLocation(Kaka.MODID,name)));
+    }
+
+    public static final TagKey<Item> KAKA_ITEM = TagKey.create(Registries.ITEM, new ResourceLocation(Kaka.MODID, "kaka_item"));
 
     public static RegistryObject<Item> registerItem(String name) {
         return ITEMS.register(name, () -> new KakaItem(ITEM_PROPERTIES));
