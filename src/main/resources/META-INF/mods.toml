@@ -1,6 +1,6 @@
 modLoader="javafml" #mandatory
-loaderVersion="[41,)"
-license="All rights reserved"
+loaderVersion="[43,)"
+license="MIT"
 [[mods]]
 modId="kaka"
 version="${file.jarVersion}"
@@ -22,7 +22,7 @@ Adds some kaka into game
     modId="forge" #mandatory
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[41,)" #mandatory
+    versionRange="[43,)" #mandatory
     ordering="NONE"
     side="BOTH"
 # Here's another dependency

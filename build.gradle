@@ -6,7 +6,7 @@ plugins {
 }
 
 
-version = '1.3.3'
+version = '1.3.4'
 group = 'com.igentuman.kaka'
 archivesBaseName = 'kaka-1.19'
 
