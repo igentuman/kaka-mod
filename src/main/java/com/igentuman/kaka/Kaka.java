@@ -35,7 +35,12 @@ public class Kaka
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(ModSetup::init);
         modbus.addListener(ModSetup::onCustomTab);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT,() -> () -> modbus.addListener(ClientSetup::init));
+        modbus.addListener(ModSetup::entityAttributeCreationEvent);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT,() -> () -> {
+            modbus.addListener(ClientSetup::init);
+            modbus.addListener(ClientSetup::onRegisterLayers);
+            modbus.addListener(ClientSetup::onRegisterRenderer);
+        });
         modbus.register(new Events());
     }
 
@@ -51,8 +56,5 @@ public class Kaka
             ClientConfig.setLoaded();
     }
 
-    @SubscribeEvent
-    public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
-        event.put(Registration.KAKA_DEMON.get(), KakaDemon.prepareAttributes().build());
-    }
+
 }

@@ -90,8 +90,5 @@ public class Events {
         }
     }
 
-    @SubscribeEvent
-    public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
-        event.put(Registration.KAKA_DEMON.get(), KakaDemon.prepareAttributes().build());
-    }
+
 }

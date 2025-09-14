@@ -109,8 +109,5 @@ public class Registration {
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
     }
-    @SubscribeEvent
-    public static void entityAttributeCreationEvent(EntityAttributeCreationEvent event) {
-        event.put(Registration.KAKA_DEMON.get(), KakaDemon.prepareAttributes().build());
-    }
+
 }
