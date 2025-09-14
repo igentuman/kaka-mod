@@ -24,8 +24,8 @@ public class KakaGoal extends Goal {
 
     public KakaGoal(Mob mob, Item kakaItem) {
         this.mob = mob;
-        this.level = mob.level;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
+        this.level = mob.level();
+        this.setFlags(EnumSet.noneOf(Goal.Flag.class)); // Don't interfere with other goals
         Random r = new Random();
         int low = CommonConfig.GENERAL.minimal_timespan.get();
         int high = low+1000;
@@ -34,7 +34,11 @@ public class KakaGoal extends Goal {
     }
 
     public boolean canUse() {
-        return true;
+        return !this.level.isClientSide; // Only run on server side
+    }
+
+    public boolean canContinueToUse() {
+        return !this.level.isClientSide; // Continue running on server side
     }
 
     public void start() {
@@ -43,17 +47,19 @@ public class KakaGoal extends Goal {
     }
 
     public void tick() {
-        if(this.level.isClientSide) {
-            return;
-        }
         this.counter++;
         if (this.counter > this.kakaDelay) {
             mob.spawnAtLocation(kaka);
-            if(ClientConfig.GENERAL.mobs_fart_volume.get() > 0) {
-                mob.playSound(Registration.FART.get(),1.0F, ClientConfig.GENERAL.mobs_fart_volume.get());
-            }
-
-            counter=0;
+            // Play sound on server side - the sound will be sent to clients automatically
+            this.level.playSound(null, mob.getX(), mob.getY(), mob.getZ(), 
+                Registration.FART.get(), mob.getSoundSource(), 1.0F, 1.0F);
+            
+            // Reset counter and set new random delay
+            counter = 0;
+            Random r = new Random();
+            int low = CommonConfig.GENERAL.minimal_timespan.get();
+            int high = low + 1000;
+            kakaDelay = r.nextInt(high - low) + low;
         }
     }
 }

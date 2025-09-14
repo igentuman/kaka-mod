@@ -2,8 +2,10 @@ package com.igentuman.kaka.setup;
 
 import com.igentuman.kaka.Kaka;
 import com.igentuman.kaka.entity.boss.KakaDemon;
+import com.igentuman.kaka.entity.model.KakaDemonModel;
 import com.igentuman.kaka.entity.render.KakaDemonRender;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -24,12 +26,13 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-       // event.registerLayerDefinition(KakaDemonModel., KakaDemonModel::createBodyLayer);
+        event.registerLayerDefinition(KakaDemonModel.LAYER_LOCATION, KakaDemonModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(Registration.KAKA_DEMON.get(), KakaDemonRender::new);
+            event.registerEntityRenderer(Registration.THROW_KAKA_BLOCK.get(), ThrownItemRenderer::new);
     }
 
     @SubscribeEvent

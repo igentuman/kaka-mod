@@ -38,23 +38,19 @@ public class Events {
         Entity e = event.getEntity();
         if (e instanceof Cow && CommonConfig.GENERAL.cow_kaka.get())
         {
-            int goals = ((Cow) e).goalSelector.getAvailableGoals().toArray().length;
-            ((Cow) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.COW_KAKA.get()));
+            // Use priority 10 - high enough to run but not interfere with essential goals
+            ((Cow) e).goalSelector.addGoal(10, new KakaGoal((Mob)e, Registration.COW_KAKA.get()));
         } else if(e instanceof Sheep && CommonConfig.GENERAL.sheep_kaka.get()) {
-            int goals = ((Sheep) e).goalSelector.getAvailableGoals().toArray().length;
-            ((Sheep) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.SHEEP_KAKA.get()));
+            ((Sheep) e).goalSelector.addGoal(10, new KakaGoal((Mob)e, Registration.SHEEP_KAKA.get()));
         } else if(e instanceof Horse && CommonConfig.GENERAL.horse_kaka.get()) {
-            int goals = ((Horse) e).goalSelector.getAvailableGoals().toArray().length;
-            ((Horse) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.HORSE_KAKA.get()));
+            ((Horse) e).goalSelector.addGoal(10, new KakaGoal((Mob)e, Registration.HORSE_KAKA.get()));
         } else if(e instanceof Pig && CommonConfig.GENERAL.pig_kaka.get()) {
-            int goals = ((Pig) e).goalSelector.getAvailableGoals().toArray().length;
-            ((Pig) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.PIG_KAKA.get()));
+            ((Pig) e).goalSelector.addGoal(10, new KakaGoal((Mob)e, Registration.PIG_KAKA.get()));
         } else if(e instanceof Villager && CommonConfig.GENERAL.villager_kaka.get()) {
-            int goals = ((Villager) e).goalSelector.getAvailableGoals().toArray().length;
-            ((Villager) e).goalSelector.addGoal(goals, new KakaGoal((Mob)e, Registration.VILAGER_KAKA.get()));
+            ((Villager) e).goalSelector.addGoal(10, new KakaGoal((Mob)e, Registration.VILAGER_KAKA.get()));
         }
         //setting default saturation level for player
-        if(e instanceof Player && !e.level.isClientSide) {
+        if(e instanceof Player && !event.getLevel().isClientSide) {
             if( ! lastHungerLevels.containsKey(((Player) e).getUUID())) {
                 lastHungerLevels.put(((Player) e).getUUID(), ((Player) e).getFoodData().getFoodLevel());
             }
@@ -80,13 +76,13 @@ public class Events {
         if (event.isCanceled()) return;
         if(!CommonConfig.GENERAL.player_kaka.get()) return;
         Player player = event.player;
-        if (!player.level.isClientSide) {
+        if (!event.side.isClient()) {
             float diff = lastHungerLevels.get(player.getUUID()) - player.getFoodData().getFoodLevel();
             if(diff > 0 && diff >= CommonConfig.GENERAL.player_kaka_hunger_loss.get()*2) {
                 player.spawnAtLocation(Registration.PLAYER_KAKA.get());
-                if(ClientConfig.GENERAL.player_fart_volume.get() > 0) {
-                    player.playSound(Registration.FART.get(),1.0F, ClientConfig.GENERAL.player_fart_volume.get());
-                }
+                // Play sound on server side - the sound will be sent to clients automatically
+                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), 
+                    Registration.FART.get(), player.getSoundSource(), 1.0F, 1.0F);
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());
             } else if(diff < 0) {
                 lastHungerLevels.replace(player.getUUID(), player.getFoodData().getFoodLevel());

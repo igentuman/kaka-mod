@@ -4,14 +4,14 @@ import com.igentuman.kaka.Kaka;
 import com.igentuman.kaka.entity.boss.KakaDemon;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -39,15 +39,17 @@ public class ModSetup {
     }
 
     @SubscribeEvent
-    public static void onCustomTab(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(new ResourceLocation(Kaka.MODID, "tutorial"), builder -> {
-            builder.title(Component.translatable("itemGroup." + TAB_NAME))
-                    .icon(() -> new ItemStack(Registration.COW_KAKA.get()))
-                    .displayItems((enabledFeatures, output, tab) -> {
-                        output.accept(Registration.KAKA_BLOCK.get());
-                        output.accept(Registration.KAKA_BLOCK.get());
-
-                    });
-        });
+    public static void onCustomTab(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(Registration.KAKA_BLOCK_ITEM.get());
+            event.accept(Registration.KAKA_DEMON_HEAD_BLOCK_ITEM.get());
+        }if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(Registration.COW_KAKA.get());
+            event.accept(Registration.SHEEP_KAKA.get());
+            event.accept(Registration.HORSE_KAKA.get());
+            event.accept(Registration.VILAGER_KAKA.get());
+            event.accept(Registration.PLAYER_KAKA.get());
+            event.accept(Registration.PIG_KAKA.get());
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.igentuman.kaka.setup.ClientSetup;
 import com.igentuman.kaka.setup.Events;
 import com.igentuman.kaka.setup.ModSetup;
 import com.igentuman.kaka.setup.Registration;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,8 +34,13 @@ public class Kaka
         Registration.init();
         IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
         modbus.addListener(ModSetup::init);
+        modbus.addListener(ModSetup::onCustomTab);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT,() -> () -> modbus.addListener(ClientSetup::init));
         modbus.register(new Events());
+    }
+
+    public static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
     @SubscribeEvent
